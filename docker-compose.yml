@@ -1,0 +1,55 @@
+
+# ============================================================================
+# docker-compose.yml
+# ============================================================================
+"""
+version: '3.8'
+
+services:
+  nunalleq-synth:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: nunalleq-synth:latest
+    container_name: nunalleq-generator
+    runtime: nvidia  # For GPU support
+    environment:
+      - NVIDIA_VISIBLE_DEVICES=all
+      - NVIDIA_DRIVER_CAPABILITIES=compute,utility,graphics
+    volumes:
+      - ./models:/data/models:ro
+      - ./output:/data/output:rw
+      - ./configs:/app/configs:ro
+    command: >
+      generate
+      --models /data/models
+      --output /data/output
+      --num-images 1000
+      --config /app/configs/default.yaml
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: 1
+              capabilities: [gpu]
+
+  # Development service
+  nunalleq-dev:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: nunalleq-synth:dev
+    container_name: nunalleq-dev
+    runtime: nvidia
+    environment:
+      - NVIDIA_VISIBLE_DEVICES=all
+    volumes:
+      - .:/app:rw
+      - ./models:/data/models:ro
+      - ./output:/data/output:rw
+    command: tail -f /dev/null
+    stdin_open: true
+    tty: true
+"""
+
