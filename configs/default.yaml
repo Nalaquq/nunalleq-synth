@@ -1,0 +1,22 @@
+model_dir: "./data/models"
+output_dir: "./output"
+num_images: 1000
+train_test_val_split: [0.8, 0.1, 0.1]
+max_objects_per_scene: 3
+
+physics:
+  gravity: [0.0, 0.0, -9.81]
+  simulation_steps: 120
+
+render:
+  engine: "CYCLES"
+  samples: 128
+  resolution: [1920, 1080]
+
+annotation:
+  format: "yolo"
+  min_visibility: 0.3
+  class_names:
+    - "ulu"
+    - "mask"
+    - "doll"
