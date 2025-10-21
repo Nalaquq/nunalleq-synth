@@ -1,0 +1,43 @@
+# configs/high_quality.yaml
+# High Quality Configuration for Publication-Ready Images
+
+model_dir: "./models"
+output_dir: "./output_hq"
+
+num_images: 500
+train_test_val_split: [0.8, 0.1, 0.1]
+max_objects_per_scene: 2
+random_seed: 42
+
+physics:
+  gravity: [0.0, 0.0, -9.81]
+  simulation_steps: 240  # More steps for stable placement
+  substeps: 20
+  friction: 0.6
+  restitution: 0.2
+
+render:
+  engine: "CYCLES"
+  samples: 512  # Higher samples for better quality
+  use_gpu: true
+  resolution: [2560, 1440]  # Higher resolution
+  file_format: "PNG"
+  quality: 100
+
+randomization:
+  lighting_intensity_range: [800.0, 1500.0]
+  lighting_color_temp_range: [4000.0, 5500.0]
+  camera_distance_range: [0.7, 1.5]
+  camera_angle_range: [-20.0, 20.0]
+  object_scale_range: [0.9, 1.1]
+  background_brightness_range: [0.8, 0.95]
+
+annotation:
+  format: "yolo"
+  min_visibility: 0.5
+  min_bbox_area: 200
+  class_names:
+    - "ulu"
+    - "mask"
+    - "doll"
+    - "tool"
