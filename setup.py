@@ -13,16 +13,20 @@ with open("nunalleq_synth/__version__.py") as f:
 this_directory = Path(__file__).parent
 long_description = (this_directory / "README.md").read_text(encoding="utf-8")
 
-# Core dependencies
+# Core dependencies (without Blender - always installable)
 install_requires = [
-    "numpy>=1.24.0",
-    "opencv-python>=4.7.0",
-    "Pillow>=9.5.0",
-    "PyYAML>=6.0",
-    "tqdm>=4.65.0",
-    "pydantic>=2.0.0",
+    "numpy>=1.24.0,<2.0.0",
+    "opencv-python>=4.7.0,<5.0.0",
+    "Pillow>=9.5.0,<11.0.0",
+    "PyYAML>=6.0,<7.0.0",
+    "tqdm>=4.65.0,<5.0.0",
+    "pydantic>=2.0.0,<3.0.0",
     "typing-extensions>=4.6.0",
-    "bpy>=3.6.0",  # Blender as Python module
+]
+
+# Blender dependencies (optional - for actual rendering)
+blender_requires = [
+    "bpy>=3.6.0; python_version=='3.11'",  # bpy only works on Python 3.11
 ]
 
 # Development dependencies
@@ -30,14 +34,15 @@ dev_requires = [
     "pytest>=7.3.0",
     "pytest-cov>=4.1.0",
     "pytest-mock>=3.11.0",
+    "pytest-asyncio>=0.21.0",
     "black>=23.3.0",
     "isort>=5.12.0",
     "mypy>=1.3.0",
     "flake8>=6.0.0",
     "pylint>=2.17.0",
     "pre-commit>=3.3.0",
-    "sphinx>=6.2.0",
-    "sphinx-rtd-theme>=1.2.0",
+    "ipython>=8.12.0",
+    "ipdb>=0.13.13",
 ]
 
 # Documentation dependencies
@@ -66,9 +71,10 @@ setup(
     python_requires=">=3.8",
     install_requires=install_requires,
     extras_require={
+        "blender": blender_requires,
         "dev": dev_requires,
         "docs": doc_requires,
-        "all": dev_requires + doc_requires,
+        "all": blender_requires + dev_requires + doc_requires,
     },
     entry_points={
         "console_scripts": [

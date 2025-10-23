@@ -42,52 +42,100 @@ The Nunalleq Synthetic Data Generator addresses critical needs for the Nunalleq 
 
 ## 🚀 Installation
 
-### Prerequisites
-
-- Python 3.8 or higher
-- Blender 3.6+ (optional but required for data generation - see installation options below)
-- NVIDIA GPU with CUDA support (optional, for faster rendering)
-
-### From PyPI (when published)
+### Quick Install
 
 ```bash
+# Install core library (works on any Python 3.8+)
 pip install nunalleq-synth
+
+# Install with Blender support (Python 3.11 only)
+pip install nunalleq-synth[blender]
 ```
 
-### From Source
+### Understanding Installation Options
+
+`nunalleq-synth` can be installed in two ways:
+
+1. **Core Only**: Configuration, annotation tools, utilities (no 3D rendering)
+2. **With Blender**: Full pipeline including 3D rendering and physics simulation
+
+**For actual data generation, you need Blender.** Choose one of these methods:
+
+| Method | Best For | Python Version | Difficulty |
+|--------|----------|----------------|------------|
+| `pip install nunalleq-synth[blender]` | Quick start | 3.11 only | ⭐ Easy |
+| System Blender + install into Blender's Python | Maximum flexibility | Any (3.8+) | ⭐⭐ Moderate |
+| Docker | Production, CI/CD | Any | ⭐⭐ Moderate |
+
+📖 **[Read the Complete Installation Guide →](docs/INSTALLATION.md)**
+
+### Quick Start Options
+
+#### Option 1: Using pip (Python 3.11 only)
+
+```bash
+# Create Python 3.11 environment
+python3.11 -m venv venv
+source venv/bin/activate
+
+# Install with Blender
+pip install nunalleq-synth[blender]
+```
+
+#### Option 2: Using System Blender
+
+```bash
+# 1. Install Blender system-wide
+sudo snap install blender --classic  # Linux
+brew install --cask blender          # macOS
+
+# 2. Install library into Blender's Python
+BLENDER_PYTHON=/snap/blender/current/4.*/python/bin/python3.*
+$BLENDER_PYTHON -m pip install nunalleq-synth
+
+# 3. Run with Blender's Python
+$BLENDER_PYTHON your_script.py
+```
+
+#### Option 3: Using Docker
+
+```bash
+# Build and run
+docker-compose up
+
+# Or use pre-built image (when published)
+docker pull nunalleq/nunalleq-synth:latest
+```
+
+### Development Installation
 
 ```bash
 # Clone repository
 git clone https://github.com/nalaquq/nunalleq-synth.git
 cd nunalleq-synth
 
-# Create virtual environment
-python3 -m venv venv
-source venv/bin/activate  # On Windows: venv\Scripts\activate
+# Create virtual environment (Python 3.11 for Blender support)
+python3.11 -m venv venv
+source venv/bin/activate
 
-# Install package with Blender support (REQUIRED for data generation)
-pip install -e ".[blender]"
-
-# OR install without Blender (for testing/development only)
-pip install -e .
-```
-
-**Note on Blender (bpy):** The `bpy` package (Blender as a Python module) is not available on all platforms via PyPI. If installation fails:
-- **Option 1 (Recommended):** Use the provided Docker image (see Docker section)
-- **Option 2:** Install system Blender 3.6+ and use its Python environment
-- **Option 3 (Linux):** Run `bash scripts/setup_blender.sh` to install Blender
-
-### Development Installation
-
-```bash
-# Install with development dependencies (includes Blender)
+# Install in development mode with all dependencies
 pip install -e ".[all]"
-
-# OR install dev tools without Blender (for non-rendering tasks)
-pip install -e ".[dev]"
 
 # Install pre-commit hooks
 pre-commit install
+```
+
+### Verify Installation
+
+```bash
+# Check core library
+python -c "from nunalleq_synth import GenerationConfig; print('✓ Core library installed')"
+
+# Check Blender integration
+python -c "import bpy; from nunalleq_synth import SyntheticGenerator; print('✓ Blender integration working')"
+
+# Check GPU support
+python -c "from nunalleq_synth.utils.gpu import check_gpu; check_gpu()"
 ```
 
 ## 🎬 Quick Start
