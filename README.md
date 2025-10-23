@@ -86,11 +86,11 @@ pip install nunalleq-synth[blender]
 
 ```bash
 # 1. Install Blender system-wide
-sudo snap install blender --classic  # Linux
+sudo apt install blender  # Linux (Ubuntu/Debian)
 brew install --cask blender          # macOS
 
 # 2. Install library into Blender's Python
-BLENDER_PYTHON=/snap/blender/current/4.*/python/bin/python3.*
+BLENDER_PYTHON=$(blender --background --python-expr "import sys; print(sys.executable)")
 $BLENDER_PYTHON -m pip install nunalleq-synth
 
 # 3. Run with Blender's Python
