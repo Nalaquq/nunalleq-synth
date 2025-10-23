@@ -6,7 +6,7 @@
 
 Physics-based synthetic data generation for Yup'ik artifact object detection using Blender.
 
-This project supports the [Nunalleq Museum Digital Guide](https://nunalleq.com), enabling real-time artifact recognition in the museum through computer vision trained on synthetic data.
+This project supports the [Nunalleq Museum Digital Guide](https://www.nunalleq.org), enabling real-time artifact recognition in the museum through computer vision trained on synthetic data.
 
 ## 🎯 Project Goals
 
@@ -45,7 +45,7 @@ The Nunalleq Synthetic Data Generator addresses critical needs for the Nunalleq 
 ### Prerequisites
 
 - Python 3.8 or higher
-- Blender 3.6+ (automatically configured)
+- Blender 3.6+ (optional but required for data generation - see installation options below)
 - NVIDIA GPU with CUDA support (optional, for faster rendering)
 
 ### From PyPI (when published)
@@ -369,7 +369,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## 📞 Contact
 
-- **Project Website**: [https://nunalleq.com](https://nunalleq.com)
+- **Project Website**: [https://www.nunalleq.org](https://www.nunalleq.org)
 - **Email**: info@nalaquq.com
 - **Issues**: [GitHub Issues](https://github.com/nalaquq/nunalleq-synth/issues)
 

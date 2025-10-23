@@ -255,5 +255,5 @@ If objects fall through ground or behave oddly:
 
 - **Blender Python API**: https://docs.blender.org/api/current/
 - **YOLO Format**: https://docs.ultralytics.com/datasets/detect/
-- **Project Website**: https://nunalleq.com
+- **Project Website**: https://www.nunalleq.org
 - **Documentation**: https://nunalleq-synth.readthedocs.io
