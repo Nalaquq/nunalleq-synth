@@ -3,7 +3,7 @@
 # ============================================================================
 
 #!/usr/bin/env python3
-"\"\"\"Example with custom randomization parameters.\"\"\"
+"""Example with custom randomization parameters."""  # FIXED
 
 from pathlib import Path
 
@@ -13,7 +13,7 @@ from nunalleq_synth.pipeline.config import RandomizationConfig
 
 
 def main() -> None:
-    "\"\"\"Generate dataset with custom randomization.\"\"\"
+    """Generate dataset with custom randomization."""
     
     # Custom randomization settings
     randomization = RandomizationConfig(
@@ -43,4 +43,3 @@ def main() -> None:
 
 if __name__ == "__main__":
     main()
-

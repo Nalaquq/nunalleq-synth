@@ -1,7 +1,6 @@
 # ============================================================================
 # MANIFEST.in
 # ============================================================================
-"""
 include README.md
 include LICENSE
 include requirements.txt
@@ -10,4 +9,3 @@ recursive-include nunalleq_synth *.py
 recursive-include configs *.yaml
 recursive-exclude * __pycache__
 recursive-exclude * *.py[co]
-"""

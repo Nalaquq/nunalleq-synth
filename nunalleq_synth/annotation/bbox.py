@@ -1,4 +1,3 @@
-
 # ============================================================================
 # nunalleq_synth/annotation/bbox.py
 # ============================================================================
@@ -9,6 +8,7 @@ from dataclasses import dataclass
 from typing import Optional, Tuple
 
 import bpy
+import bpy_extras.object_utils  # FIXED: Added missing import
 import numpy as np
 
 from nunalleq_synth.core.camera import Camera
@@ -134,4 +134,3 @@ class BoundingBoxCalculator:
             height=height_norm,
             area=area,
         )
-

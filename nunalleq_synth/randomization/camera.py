@@ -1,4 +1,3 @@
-
 # ============================================================================
 # nunalleq_synth/randomization/camera.py
 # ============================================================================
@@ -6,6 +5,7 @@
 
 import logging
 import random
+from typing import Tuple  # FIXED: Import Tuple from typing
 
 import numpy as np
 
@@ -34,7 +34,7 @@ class CameraRandomizer:
     def randomize_camera(
         self,
         camera: Camera,
-        focus_point: tuple[float, float, float] = (0.0, 0.0, 0.5),
+        focus_point: Tuple[float, float, float] = (0.0, 0.0, 0.5),  # FIXED: Use Tuple
     ) -> None:
         """Randomize camera position and orientation.
         
@@ -73,4 +73,3 @@ class CameraRandomizer:
         camera.set_focal_length(base_focal_length + focal_variation)
         
         logger.debug(f"Camera randomized: distance={distance:.2f}, azimuth={azimuth:.2f}")
-

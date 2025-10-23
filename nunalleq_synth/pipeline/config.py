@@ -4,7 +4,7 @@
 import logging
 from dataclasses import dataclass, field
 from pathlib import Path
-from typing import Optional, Tuple, Dict, Any
+from typing import Optional, Tuple, Dict, Any, List  # FIXED: Import List from typing
 
 import yaml
 from pydantic import BaseModel, Field, validator
@@ -129,7 +129,7 @@ class AnnotationConfig(BaseModel):
         ge=1,
         description="Minimum bounding box area in pixels",
     )
-    class_names: list[str] = Field(
+    class_names: List[str] = Field(  # FIXED: Use List from typing
         default_factory=list,
         description="List of class names for objects",
     )
@@ -247,4 +247,3 @@ def save_config(config: GenerationConfig, output_path: Path) -> None:
         yaml.dump(config_dict, f, default_flow_style=False, sort_keys=False)
     
     logger.info(f"Configuration saved to {output_path}")
-

@@ -1,4 +1,3 @@
-
 # ============================================================================
 # nunalleq_synth/pipeline/batch.py
 # ============================================================================
@@ -56,7 +55,8 @@ class BatchProcessor:
         """
         try:
             # Create config for this directory
-            config = self.config.copy(deep=True)
+            # FIXED: Use model_copy() instead of copy() for Pydantic v2
+            config = self.config.model_copy(deep=True)
             config.model_dir = model_dir
             config.output_dir = output_dir
             
@@ -119,4 +119,3 @@ class BatchProcessor:
         )
         
         return success_count
-

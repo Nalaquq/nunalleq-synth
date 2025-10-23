@@ -1,4 +1,3 @@
-
 # ============================================================================
 # nunalleq_synth/objects/material.py
 # ============================================================================
@@ -6,6 +5,7 @@
 
 import logging
 import random
+from typing import Tuple  # FIXED: Import Tuple from typing
 
 import bpy
 
@@ -18,7 +18,7 @@ class MaterialManager:
     @staticmethod
     def create_material(
         name: str,
-        color: tuple[float, float, float, float] = (0.8, 0.8, 0.8, 1.0),
+        color: Tuple[float, float, float, float] = (0.8, 0.8, 0.8, 1.0),  # FIXED: Use Tuple
         metallic: float = 0.0,
         roughness: float = 0.5,
     ) -> bpy.types.Material:

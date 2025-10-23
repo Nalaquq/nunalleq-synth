@@ -1,11 +1,10 @@
-
 # ============================================================================
 # nunalleq_synth/objects/transform.py
 # ============================================================================
 """Object transformation utilities."""
 
 import logging
-from typing import Tuple
+from typing import Tuple  # FIXED: Import Tuple from typing
 
 import bpy
 import numpy as np

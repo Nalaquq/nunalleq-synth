@@ -1,9 +1,8 @@
-
 # ============================================================================
 # tests/conftest.py
 # ============================================================================
 
-"\"\"\"Pytest configuration and fixtures.\"\"\"
+"""Pytest configuration and fixtures."""  # FIXED
 
 import pytest
 from pathlib import Path
@@ -15,7 +14,7 @@ from nunalleq_synth.pipeline.config import GenerationConfig
 
 @pytest.fixture
 def temp_dir():
-    "\"\"\"Create temporary directory for tests.\"\"\"
+    """Create temporary directory for tests."""
     tmpdir = Path(tempfile.mkdtemp())
     yield tmpdir
     shutil.rmtree(tmpdir)
@@ -23,7 +22,7 @@ def temp_dir():
 
 @pytest.fixture
 def sample_config(temp_dir):
-    "\"\"\"Create sample configuration for testing.\"\"\"
+    """Create sample configuration for testing."""
     model_dir = temp_dir / "models"
     output_dir = temp_dir / "output"
     model_dir.mkdir()
@@ -42,7 +41,7 @@ def sample_config(temp_dir):
 
 @pytest.fixture
 def mock_blender(monkeypatch):
-    "\"\"\"Mock Blender imports for testing without Blender.\"\"\"
+    """Mock Blender imports for testing without Blender."""
     import sys
     from unittest.mock import MagicMock
     

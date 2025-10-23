@@ -1,4 +1,3 @@
-
 # ============================================================================
 # nunalleq_synth/objects/loader.py
 # ============================================================================
@@ -6,7 +5,7 @@
 
 import logging
 from pathlib import Path
-from typing import Optional, List
+from typing import Optional, List, Tuple  # FIXED: Import Tuple from typing
 
 import bpy
 
@@ -28,7 +27,7 @@ class ObjectLoader:
         self,
         filepath: Path,
         scale: float = 1.0,
-        location: tuple[float, float, float] = (0.0, 0.0, 0.0),
+        location: Tuple[float, float, float] = (0.0, 0.0, 0.0),  # FIXED: Use Tuple
     ) -> Optional[bpy.types.Object]:
         """Load a .glb file into the scene.
         

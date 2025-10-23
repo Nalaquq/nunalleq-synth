@@ -1,11 +1,9 @@
-
-
 # ============================================================================
 # scripts/validate_dataset.py
 # ============================================================================
 
 #!/usr/bin/env python3
-"\"\"\"Validate generated dataset and create report.\"\"\"
+"""Validate generated dataset and create report."""  # FIXED
 
 import argparse
 import json
@@ -17,14 +15,14 @@ from nunalleq_synth.utils.io import list_files
 
 
 def generate_report(dataset_dir: Path) -> Dict[str, Any]:
-    "\"\"\"Generate validation report for dataset."
+    """Generate validation report for dataset.
     
     Args:
         dataset_dir: Root directory of dataset.
         
     Returns:
         Dictionary containing validation report.
-    
+    """
     validator = AnnotationValidator()
     
     report = {
@@ -76,7 +74,7 @@ def generate_report(dataset_dir: Path) -> Dict[str, Any]:
 
 
 def main() -> None:
-    "\"\"\"Main validation script.\"\"\"
+    """Main validation script."""
     parser = argparse.ArgumentParser(description="Validate synthetic dataset")
     parser.add_argument(
         "--dataset",
@@ -98,14 +96,14 @@ def main() -> None:
     report = generate_report(args.dataset)
     
     # Print summary
-    print("\\nValidation Summary:")
+    print("\nValidation Summary:")
     print(f"  Valid samples: {report['summary']['total_valid']}")
     print(f"  Invalid samples: {report['summary']['total_invalid']}")
     print(f"  Success rate: {report['summary']['success_rate']:.2%}")
     print(f"  Errors found: {report['summary']['error_count']}")
     
     # Print split details
-    print("\\nSplit Details:")
+    print("\nSplit Details:")
     for split, data in report["splits"].items():
         print(f"  {split}:")
         print(f"    Images: {data['num_images']}")
@@ -115,11 +113,11 @@ def main() -> None:
     if args.output:
         with open(args.output, 'w') as f:
             json.dump(report, f, indent=2)
-        print(f"\\nReport saved to: {args.output}")
+        print(f"\nReport saved to: {args.output}")
     
     # Print some errors
     if report["errors"]:
-        print("\\nFirst few errors:")
+        print("\nFirst few errors:")
         for error in report["errors"][:10]:
             print(f"  - {error}")
 

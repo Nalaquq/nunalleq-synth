@@ -3,7 +3,7 @@
 # ============================================================================
 
 #!/usr/bin/env python3
-"\"\"\"Example of batch processing multiple model directories.\"\"\"
+"""Example of batch processing multiple model directories."""  # FIXED
 
 from pathlib import Path
 
@@ -12,7 +12,7 @@ from nunalleq_synth.pipeline.batch import BatchProcessor
 
 
 def main() -> None:
-    "\"\"\"Process multiple model directories in parallel.\"\"\"
+    """Process multiple model directories in parallel."""
     
     # Base configuration
     base_config = GenerationConfig(

@@ -1,4 +1,3 @@
-
 # ============================================================================
 # nunalleq_synth/core/camera.py
 # ============================================================================
@@ -10,6 +9,7 @@ from typing import Optional, Tuple
 
 import bpy
 import numpy as np
+from mathutils import Vector  # FIXED: Added import for Vector
 
 logger = logging.getLogger(__name__)
 
@@ -75,7 +75,8 @@ class Camera:
         Args:
             target: Target location as (x, y, z).
         """
-        direction = np.array(target) - np.array(self.camera_obj.location)
+        # FIXED: Use mathutils.Vector instead of numpy array
+        direction = Vector(target) - Vector(self.camera_obj.location)
         
         # Calculate rotation
         rot_quat = direction.to_track_quat('-Z', 'Y')
@@ -152,7 +153,9 @@ class Camera:
         Returns:
             Camera coordinates.
         """
+        # FIXED: Properly compute and return camera coordinates
         camera_matrix = self.camera_obj.matrix_world.inverted()
-        camera_coords = camera_matrix @ world_coords
+        # Convert numpy array to Vector for matrix multiplication
+        world_vec = Vector(world_coords)
+        camera_coords = camera_matrix @ world_vec
         return np.array(camera_coords)
-

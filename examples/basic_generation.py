@@ -3,7 +3,7 @@
 # ============================================================================
 
 #!/usr/bin/env python3
-"\"\"\"Basic example of synthetic data generation.\"\"\"
+"""Basic example of synthetic data generation."""  # FIXED: Removed escaped quotes
 
 from pathlib import Path
 
@@ -11,7 +11,7 @@ from nunalleq_synth import SyntheticGenerator, GenerationConfig
 
 
 def main() -> None:
-    "\"\"\"Generate a basic synthetic dataset.\"\"\"
+    """Generate a basic synthetic dataset."""
     
     # Configure generation
     config = GenerationConfig(
@@ -36,4 +36,3 @@ def main() -> None:
 
 if __name__ == "__main__":
     main()
-
