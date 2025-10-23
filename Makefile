@@ -17,10 +17,10 @@ help:
 	@echo ""
 
 install:
-	pip install -e .
+	pip install -e ".[blender]"
 
 install-dev:
-	pip install -e ".[dev]"
+	pip install -e ".[all]"
 	pre-commit install
 
 test:

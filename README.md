@@ -65,17 +65,25 @@ cd nunalleq-synth
 python3 -m venv venv
 source venv/bin/activate  # On Windows: venv\Scripts\activate
 
-# Install package
-pip install -e .
+# Install package with Blender support (REQUIRED for data generation)
+pip install -e ".[blender]"
 
-# Setup Blender (Linux only)
-bash scripts/setup_blender.sh
+# OR install without Blender (for testing/development only)
+pip install -e .
 ```
+
+**Note on Blender (bpy):** The `bpy` package (Blender as a Python module) is not available on all platforms via PyPI. If installation fails:
+- **Option 1 (Recommended):** Use the provided Docker image (see Docker section)
+- **Option 2:** Install system Blender 3.6+ and use its Python environment
+- **Option 3 (Linux):** Run `bash scripts/setup_blender.sh` to install Blender
 
 ### Development Installation
 
 ```bash
-# Install with development dependencies
+# Install with development dependencies (includes Blender)
+pip install -e ".[all]"
+
+# OR install dev tools without Blender (for non-rendering tasks)
 pip install -e ".[dev]"
 
 # Install pre-commit hooks
